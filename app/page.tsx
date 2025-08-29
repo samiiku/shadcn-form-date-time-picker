@@ -61,16 +61,11 @@ export default function Page() {
   }, [rangeForm]);
 
   function onSimpleSubmit(data: SimpleFormData) {
-    alert('Selected: ' + data.date?.toLocaleString());
+    alert('Selected: ' + data.date);
   }
 
   function onRangeSubmit(data: RangeFormData) {
-    alert(
-      'Start: ' +
-        data.start?.toLocaleString() +
-        '\nEnd: ' +
-        data.end?.toLocaleString()
-    );
+    alert('Start: ' + data.start + '\nEnd: ' + data.end);
   }
 
   return (
