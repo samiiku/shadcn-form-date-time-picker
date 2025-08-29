@@ -42,8 +42,7 @@ export default function DateTimePicker({
   const latestTempDate = useRef<Date | undefined>(tempDate);
 
   useEffect(() => {
-    latestTempDate.current = value;
-    setTempDate(value);
+    handleTempDateChange(value);
   }, [value]);
 
   const timeInputValue = useMemo(() => {
@@ -54,6 +53,11 @@ export default function DateTimePicker({
     const s = tempDate!.getSeconds().toString().padStart(2, '0');
     return `${h}:${m}:${s}`;
   }, [tempDate]);
+
+  const handleTempDateChange = (value: Date | undefined) => {
+    latestTempDate.current = value;
+    setTempDate(value);
+  };
 
   const handlePopoverOpenChange = (nextOpen: boolean) => {
     if (!nextOpen && timeInputRef.current) {
@@ -70,11 +74,12 @@ export default function DateTimePicker({
 
   const handleDateChange = (selectedValue: Date | undefined) => {
     if (selectedValue === undefined) {
+      handleTempDateChange(undefined);
       return;
     }
 
     if (tempDate === undefined) {
-      setTempDate(selectedValue);
+      handleTempDateChange(selectedValue);
       return;
     }
 
@@ -101,8 +106,7 @@ export default function DateTimePicker({
       valueSeconds
     );
 
-    latestTempDate.current = newDate;
-    setTempDate(newDate);
+    handleTempDateChange(newDate);
   };
 
   const handleTimeChange = (selectedTime: string) => {
@@ -131,8 +135,7 @@ export default function DateTimePicker({
       Number(selectedSeconds)
     );
 
-    latestTempDate.current = newDate;
-    setTempDate(newDate);
+    handleTempDateChange(newDate);
   };
 
   return (
