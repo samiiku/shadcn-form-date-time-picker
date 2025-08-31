@@ -55,7 +55,7 @@ export default function Page() {
   useEffect(() => {
     rangeForm.reset({
       start: new Date(),
-      end: new Date(new Date().setDate(new Date().getDate() - 1)),
+      end: new Date(new Date().setHours(new Date().getHours() - 1)),
     });
   }, [rangeForm]);
 
