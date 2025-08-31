@@ -156,6 +156,18 @@ export default function Page() {
           </Form>
         </section>
       </main>
+      <footer>
+        <div className="flex flex-col items-center">
+          <span className="font-semibold">Github: </span>
+          <a
+            className="underline"
+            target="_blank"
+            href="https://github.com/samiiku/shadcn-form-date-time-picker"
+          >
+            https://github.com/samiiku/shadcn-form-date-time-picker
+          </a>
+        </div>
+      </footer>
     </div>
   );
 }
