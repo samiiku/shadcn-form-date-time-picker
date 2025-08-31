@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# shadcn-form-date-time-picker
 
-## Getting Started
+Example of how to build a **date & time picker** with
+[shadcn/ui](https://ui.shadcn.com) and use it with
+[React Hook Form](https://react-hook-form.com/) and [Zod](https://zod.dev/). It
+combines a calendar + time input inside one popover.
 
-First, run the development server:
+View Demo: https://shadcn-form-date-time-picker.vercel.app/
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+_This component provides a foundation for a date & time picker that you can
+customize and extend to fit your own needs._
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Notes
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- The component maintains **internal state** (`tempDate`) to track the currently
+  selected date and time while the popover is open.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- The form value (`onChange`) is **only updated when the popover closes**,
+  ensuring that partial changes in the picker do not immediately trigger form
+  updates.
 
-## Learn More
+- The displayed date value uses `Date.toLocaleString()`, so formatting and
+  language follow the **browser's language/locale settings**.
 
-To learn more about Next.js, take a look at the following resources:
+- The time input (`<input type="time" />`) uses the **operating system's time
+  format settings**, e.g. 12h vs 24h clock.
+  
+- If you need control over the **calendar language**, you can pass a `locale`
+  prop to the underlying
+  [`Calendar`](https://ui.shadcn.com/docs/components/calendar) component.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+  ```tsx
+  import { fi } from "react-day-picker/locale"
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+  <Calendar locale={fi} ... />
+  ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Contributing
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+_If you encounter any bugs or issues, I would be happy if you opened a PR or
+issue to help improve this component._
