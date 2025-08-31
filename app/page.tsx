@@ -57,7 +57,6 @@ export default function Page() {
       start: new Date(),
       end: new Date(new Date().setDate(new Date().getDate() - 1)),
     });
-    rangeForm.handleSubmit(onRangeSubmit)();
   }, [rangeForm]);
 
   function onSimpleSubmit(data: SimpleFormData) {
